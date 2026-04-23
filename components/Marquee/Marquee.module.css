@@ -1,0 +1,48 @@
+.wrapper {
+  position: relative;
+  overflow: hidden;
+  padding: 28px 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  background: var(--bg);
+}
+
+.track {
+  display: flex;
+  gap: 0;
+  width: max-content;
+  animation: scroll 28s linear infinite;
+}
+@keyframes scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+.item {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  padding: 0 32px;
+  white-space: nowrap;
+  transition: color 0.2s ease;
+}
+.item:hover { color: var(--text-secondary); }
+
+/* Fade masks on left and right edges */
+.fade {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 120px;
+  background: linear-gradient(to right, var(--bg), transparent);
+  pointer-events: none;
+  z-index: 1;
+}
+.fadeRight {
+  left: auto;
+  right: 0;
+  background: linear-gradient(to left, var(--bg), transparent);
+}

@@ -1,0 +1,102 @@
+.studio {
+  padding: var(--section-pad);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  overflow: hidden;
+}
+
+.inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+/* ── Scroll reveal classes ── */
+.inner .reveal-left {
+  opacity: 0;
+  transform: translateX(-40px);
+  transition: opacity 0.75s ease, transform 0.75s ease;
+}
+.inner .reveal-right {
+  opacity: 0;
+  transform: translateX(40px);
+  transition: opacity 0.75s ease, transform 0.75s ease 0.15s;
+}
+.inner.revealed .reveal-left,
+.inner.revealed .reveal-right {
+  opacity: 1;
+  transform: none;
+}
+
+.heading {
+  font-family: var(--font-display);
+  font-size: clamp(36px, 4.5vw, 56px);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  margin-bottom: 24px;
+}
+.accent { color: var(--accent); }
+
+.body {
+  font-size: 15px;
+  color: var(--text-secondary);
+  line-height: 1.75;
+  margin-bottom: 16px;
+}
+
+.stats {
+  display: flex;
+  gap: 40px;
+  margin-top: 40px;
+  padding-top: 32px;
+  border-top: 1px solid var(--border);
+  /* Stats are always visible — they have their own IntersectionObserver */
+  opacity: 1 !important;
+  transform: none !important;
+}
+.stat {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.statValue {
+  font-family: var(--font-display);
+  font-size: 34px;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  transition: color 0.3s ease;
+  background: linear-gradient(135deg, #fff 60%, var(--accent) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.statLabel {
+  font-size: 11px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+/* ── SVG Illustration ── */
+.right {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.svg {
+  width: 100%;
+  max-width: 420px;
+  animation: spinSlow 60s linear infinite;
+}
+@keyframes spinSlow {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@media (max-width: 900px) {
+  .inner { grid-template-columns: 1fr; gap: 48px; }
+  .svg { max-width: 300px; margin: 0 auto; }
+  .stats { gap: 28px; }
+}

@@ -1,0 +1,123 @@
+.section {
+  padding: var(--section-pad);
+  border-top: 1px solid var(--border);
+}
+
+.heading {
+  font-family: var(--font-display);
+  font-size: clamp(36px, 5vw, 60px);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  margin-bottom: 56px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.card {
+  position: relative;
+  padding: 44px 40px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: border-color 0.3s ease, transform 0.3s ease;
+  cursor: default;
+}
+.card:hover, .cardActive {
+  border-color: rgba(79, 142, 247, 0.4);
+  transform: translateY(-6px);
+}
+
+/* Glow orb that appears on hover */
+.glow {
+  position: absolute;
+  top: -100px;
+  right: -100px;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(79, 142, 247, 0.12) 0%, transparent 70%);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+.card:hover .glow,
+.cardActive .glow {
+  opacity: 1;
+}
+
+.cardHead {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+.icon {
+  font-size: 32px;
+  color: var(--accent);
+  line-height: 1;
+  flex-shrink: 0;
+}
+.title {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  margin-bottom: 6px;
+}
+.subtitle {
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.desc {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin-bottom: 32px;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+}
+.rowLabel {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 12px;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.tag {
+  font-size: 11px;
+  color: var(--accent);
+  border: 1px solid rgba(79, 142, 247, 0.3);
+  border-radius: 100px;
+  padding: 4px 12px;
+}
+
+.list { display: flex; flex-direction: column; gap: 8px; }
+.listItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+.bullet { color: var(--accent); font-size: 12px; }
+
+@media (max-width: 900px) {
+  .grid { grid-template-columns: 1fr; }
+  .row { grid-template-columns: 1fr; gap: 20px; }
+}

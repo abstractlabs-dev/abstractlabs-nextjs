@@ -1,0 +1,113 @@
+.section {
+  padding: var(--section-pad);
+  border-top: 1px solid var(--border);
+}
+
+.heading {
+  font-family: var(--font-display);
+  font-size: clamp(36px, 5vw, 60px);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  margin-bottom: 80px;
+}
+
+/* ── Timeline Container ── */
+.timeline {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* Vertical center line */
+.line {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: linear-gradient(to bottom, var(--accent), rgba(79, 142, 247, 0.1));
+}
+
+/* Each step row */
+.step {
+  display: grid;
+  grid-template-columns: 1fr 56px 1fr;
+  align-items: start;
+  gap: 0;
+  padding: 0 0 52px;
+  animation: stepIn 0.5s ease both;
+}
+@keyframes stepIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Left-side step: card on left */
+.stepLeft { direction: ltr; }
+.stepLeft .card { grid-column: 1; text-align: right; padding-right: 40px; }
+.stepLeft .connector { grid-column: 2; }
+
+/* Right-side step: card on right */
+.stepRight .card { grid-column: 3; text-align: left; padding-left: 40px; }
+.stepRight .connector { grid-column: 2; }
+
+/* Center connector with numbered node */
+.connector {
+  display: flex;
+  justify-content: center;
+  padding-top: 0;
+}
+.node {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--bg);
+  border: 2px solid var(--accent);
+  position: relative;
+  z-index: 1;
+  box-shadow: 0 0 20px rgba(79, 142, 247, 0.25);
+}
+.nodeNum {
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: 0.05em;
+}
+
+/* Card content */
+.stepTitle {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  margin-bottom: 10px;
+}
+.stepDesc {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  max-width: 360px;
+}
+.stepLeft .stepDesc { margin-left: auto; }
+
+@media (max-width: 768px) {
+  .line { left: 20px; }
+  .timeline { padding-left: 52px; }
+  .step { grid-template-columns: 40px 1fr; gap: 16px; padding-bottom: 40px; }
+  .stepLeft .card,
+  .stepRight .card {
+    grid-column: 2;
+    text-align: left;
+    padding-right: 0;
+    padding-left: 0;
+  }
+  .connector { grid-column: 1; }
+  .stepLeft .connector { grid-row: 1; }
+  .stepDesc { max-width: 100%; margin-left: 0 !important; }
+}
