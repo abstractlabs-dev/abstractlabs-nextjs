@@ -29,10 +29,14 @@
 
 /* Typewriter word */
 .typeword {
-  position: relative;
+  color: var(--accent);
   display: inline-block;
-  min-width: 240px;
+  /* Set a width that accommodates 'Intelligent' (the longest word) without expanding */
+  width: 280px; 
+  text-align: left;
+  vertical-align: bottom;
 }
+
 .cursor {
   display: inline-block;
   margin-left: 2px;

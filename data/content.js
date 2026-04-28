@@ -1,10 +1,13 @@
 // data/content.js — all site copy in one place
 
 export const navLinks = [
-  { label: 'About', href: '#about' },
-  { label: 'Solutions', href: '#solutions' },
-  { label: 'Work', href: '#work' },
-  { label: 'Process', href: '#process' },
+  { label: 'Home', href: '/' },
+  { label: 'About', href: '/about' },
+  { label: 'Services', href: '/services' },
+  { label: 'Solutions', href: '/solutions' },
+  { label: 'Process', href: '/process' },
+  { label: 'FAQ', href: '/faq' },
+  { label: 'Blogs', href: '/blogs' },
 ];
 
 export const solutions = [

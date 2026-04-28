@@ -36,7 +36,7 @@ export default function Footer() {
                 LinkedIn
               </a>
               <a
-                href="https://github.com"
+                href="https://github.com/abstractlabs-dev"
                 target="_blank"
                 rel="noopener noreferrer"
                 className={styles.social}

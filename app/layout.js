@@ -91,9 +91,15 @@ const jsonLd = {
   },
 };
 
+import { Providers } from './providers';
+import ClientEffectsWrapper from '@/components/ClientEffectsWrapper';
+import Navbar from '@/components/Navbar/Navbar';
+import Footer from '@/components/Footer/Footer';
+import { navLinks } from '@/data/content';
+
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -107,7 +113,15 @@ export default function RootLayout({ children }) {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body>{children}</body>
+      <body>
+        <Providers>
+          <ClientEffectsWrapper>
+            <Navbar />
+            <main>{children}</main>
+            <Footer navLinks={navLinks} />
+          </ClientEffectsWrapper>
+        </Providers>
+      </body>
     </html>
   );
 }

@@ -1,50 +1,79 @@
 'use client';
 import { useState, useEffect } from 'react';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import { useTheme } from 'next-themes';
+import { Sun, Moon, Menu, X } from 'lucide-react';
 import { navLinks } from '@/data/content';
 import styles from './Navbar.module.css';
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
+  const pathname = usePathname();
+  const { theme, setTheme } = useTheme();
 
   useEffect(() => {
+    setMounted(true);
     const onScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener('scroll', onScroll);
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
+  // Close menu on route change
+  useEffect(() => {
+    setMenuOpen(false);
+  }, [pathname]);
+
   return (
     <header className={`${styles.header} ${scrolled ? styles.scrolled : ''}`}>
       <div className={`container ${styles.inner}`}>
         {/* Logo */}
-        <a href="#" className={styles.logo}>
+        <Link href="/" className={styles.logo}>
           <span className={styles.logoMark}>▲</span>
           AbstractLabs
-        </a>
+        </Link>
 
         {/* Desktop Nav */}
         <nav className={styles.nav}>
-          {navLinks.map((link) => (
-            <a key={link.label} href={link.href} className={styles.navLink}>
-              {link.label}
-            </a>
-          ))}
+          {navLinks.map((link) => {
+            const isActive = pathname === link.href;
+            return (
+              <Link 
+                key={link.label} 
+                href={link.href} 
+                className={`${styles.navLink} ${isActive ? styles.active : ''}`}
+              >
+                {link.label}
+              </Link>
+            );
+          })}
         </nav>
 
-        {/* CTA */}
+        {/* Actions */}
         <div className={styles.actions}>
-          <a href="#contact" className={styles.ctaBtn}>
+          {mounted && (
+            <button 
+              className={styles.themeToggle} 
+              onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
+              aria-label="Toggle theme"
+            >
+              {theme === 'light' ? <Moon size={20} /> : <Sun size={20} />}
+            </button>
+          )}
+
+          <Link href="/contact" className={styles.ctaBtn}>
             Get in touch
-          </a>
+          </Link>
+          
           {/* Hamburger */}
           <button
             className={styles.hamburger}
             onClick={() => setMenuOpen(!menuOpen)}
             aria-label="Toggle menu"
           >
-            <span className={`${styles.bar} ${menuOpen ? styles.open : ''}`} />
-            <span className={`${styles.bar} ${menuOpen ? styles.open : ''}`} />
-            <span className={`${styles.bar} ${menuOpen ? styles.open : ''}`} />
+            {menuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
       </div>
@@ -52,17 +81,20 @@ export default function Navbar() {
       {/* Mobile Menu */}
       {menuOpen && (
         <div className={styles.mobileMenu}>
-          {navLinks.map((link) => (
-            <a
-              key={link.label}
-              href={link.href}
-              className={styles.mobileLink}
-              onClick={() => setMenuOpen(false)}
-            >
-              {link.label}
-            </a>
-          ))}
-          <a href="#contact" className={styles.mobileCta}>Get in touch</a>
+          {navLinks.map((link) => {
+            const isActive = pathname === link.href;
+            return (
+              <Link
+                key={link.label}
+                href={link.href}
+                className={`${styles.mobileLink} ${isActive ? styles.activeMobile : ''}`}
+                onClick={() => setMenuOpen(false)}
+              >
+                {link.label}
+              </Link>
+            );
+          })}
+          <Link href="/contact" className={styles.mobileCta} onClick={() => setMenuOpen(false)}>Get in touch</Link>
         </div>
       )}
     </header>

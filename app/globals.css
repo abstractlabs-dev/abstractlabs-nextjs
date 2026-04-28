@@ -23,6 +23,21 @@
   --container: 1200px;
 }
 
+[data-theme='light'] {
+  --bg: #f8f9fa;
+  --bg-card: #ffffff;
+  --bg-card-hover: #f1f3f5;
+  --border: #e9ecef;
+  --border-light: #dee2e6;
+  --text: #1a1b1e;
+  --text-secondary: #495057;
+  --text-muted: #868e96;
+  --accent: #228be6;
+  --accent-hover: #1c7ed6;
+  --accent-dim: rgba(34, 139, 230, 0.12);
+  --green: #40c057;
+}
+
 /* ─── Reset ─────────────────────────────────────────────────── */
 *, *::before, *::after {
   box-sizing: border-box;
