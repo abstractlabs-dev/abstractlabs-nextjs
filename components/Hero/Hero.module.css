@@ -30,11 +30,6 @@
 /* Typewriter word */
 .typeword {
   color: var(--accent);
-  display: inline-block;
-  /* Set a width that accommodates 'Intelligent' (the longest word) without expanding */
-  width: 280px; 
-  text-align: left;
-  vertical-align: bottom;
 }
 
 .cursor {
