@@ -23,12 +23,22 @@ export default function About() {
       <section className="container" style={{ paddingBottom: '120px' }}>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '32px' }}>
           <div style={{ background: 'var(--bg-card)', padding: '40px', borderRadius: 'var(--radius-lg)', border: '1px solid var(--border)' }}>
-            <h3 style={{ fontSize: '24px', marginBottom: '16px' }}>Our Mission</h3>
-            <p style={{ color: 'var(--text-secondary)' }}>To empower businesses with technology that is as robust under the hood as it is stunning on the surface.</p>
+            <h3 style={{ fontSize: '24px', marginBottom: '16px', fontWeight: '600' }}>Our Mission</h3>
+            <p style={{ color: 'var(--text-secondary)', lineHeight: '1.7' }}>
+              Our mission is to bridge the gap between complex engineering and elegant design. 
+              We empower forward-thinking businesses with technology that isn't just functional, but transformative. 
+              By prioritizing performance, scalability, and high-fidelity aesthetics, we help our clients lead their industries 
+              and define the future of the digital landscape.
+            </p>
           </div>
           <div style={{ background: 'var(--bg-card)', padding: '40px', borderRadius: 'var(--radius-lg)', border: '1px solid var(--border)' }}>
-            <h3 style={{ fontSize: '24px', marginBottom: '16px' }}>Our Vision</h3>
-            <p style={{ color: 'var(--text-secondary)' }}>To set the standard for modern web platforms and AI-driven systems globally.</p>
+            <h3 style={{ fontSize: '24px', marginBottom: '16px', fontWeight: '600' }}>Our Vision</h3>
+            <p style={{ color: 'var(--text-secondary)', lineHeight: '1.7' }}>
+              We envision a world where digital experiences are seamless, intuitive, and deeply impactful. 
+              Our vision is to become the global benchmark for excellence in software craftsmanship. 
+              We strive to pioneer new standards in AI-driven systems and web architectures, 
+              creating a legacy of innovation that inspires both developers and users alike.
+            </p>
           </div>
         </div>
       </section>
