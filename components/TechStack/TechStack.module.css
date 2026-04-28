@@ -15,7 +15,7 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 2px;
-  background: var(--border);
+  background: var(--bg-card-hover);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   overflow: hidden;
@@ -61,7 +61,7 @@
 .pill {
   display: inline-block;
   padding: 8px 16px;
-  background: rgba(20, 20, 28, 1);
+  background: var(--bg-card);
   border: 1px solid var(--border);
   border-radius: 6px;
   font-size: 13px;

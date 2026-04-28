@@ -54,7 +54,7 @@
 .social:hover {
   border-color: var(--border-light);
   color: var(--text);
-  background: rgba(255,255,255,0.03);
+  background: var(--bg-card-hover);
 }
 
 .colHead {
